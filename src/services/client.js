@@ -10,3 +10,10 @@ export function checkError({ data, error }) {
   }
   return data;
 }
+
+export function checkUserError({ user, error }) {
+  if (error) {
+    throw error;
+  }
+  return user;
+}
