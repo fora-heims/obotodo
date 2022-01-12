@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/list">
-            <List user={user} />
+            <List user={user} setUser={setUser} />
           </Route>
           <Route exact path="/">
             <Auth user={user} setUser={setUser} />

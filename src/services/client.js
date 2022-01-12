@@ -17,3 +17,10 @@ export function checkUserError({ user, error }) {
   }
   return user;
 }
+
+export function checkTodoError({ data: { todos, error } }) {
+  if (error) {
+    throw error;
+  }
+  return todos;
+}

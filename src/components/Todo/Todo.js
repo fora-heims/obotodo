@@ -13,7 +13,7 @@ export default function Todo({ todos, newt, setNewt, addTodo, deleteTodo }) {
           onChange={(e) => setNewt(e.target.value)}
         />
       </label>
-      <button onClick={addTodo}>Add Task</button>
+      <button onClick={() => addTodo(newt)}>Add Task</button>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>

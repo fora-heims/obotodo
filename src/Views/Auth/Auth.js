@@ -29,7 +29,7 @@ export default function Auth({ user, setUser }) {
 
   return (
     <div>
-      <Header user={user} type={type} setType={setType} logout={logout} />
+      <Header user={user} setUser={setUser} type={type} setType={setType} logout={logout} />
       {!user ? (
         <Form
           email={email}

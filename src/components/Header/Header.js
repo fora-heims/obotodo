@@ -3,7 +3,12 @@ import classNames from 'classnames';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-export default function Header({ user, type, setType, logout }) {
+export default function Header({ user, setUser, type, setType, logout }) {
+  const logO = () => {
+    logout();
+    setUser(null);
+  };
+
   return (
     <header>
       {!user ? (
@@ -18,7 +23,7 @@ export default function Header({ user, type, setType, logout }) {
       ) : (
         <>
           <NavLink to="/list">Todo List</NavLink>
-          <h3 onClick={logout}>Sign Out</h3>
+          <h3 onClick={logO}>Sign Out</h3>
         </>
       )}
     </header>
