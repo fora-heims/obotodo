@@ -1,7 +1,6 @@
 import './Auth.css';
 import Form from '../../components/Form/Form.js';
 import Header from '../../components/Header/Header.js';
-import List from '../List/List.js';
 import { useState } from 'react';
 import { logout } from '../../services/users.js';
 import React from 'react';

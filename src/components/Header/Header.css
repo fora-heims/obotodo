@@ -1,4 +1,4 @@
-header h2:hover {
+header h3:hover {
   cursor: pointer;
   text-decoration: underline;
 }
