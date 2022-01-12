@@ -9,7 +9,7 @@ import { signInUser, signUpUser } from '../../services/users';
 export default function Auth({ user, setUser }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('message appears here');
+  const [message, setMessage] = useState('');
   const [type, setType] = useState('in');
 
   const submitHandler = async (e) => {
