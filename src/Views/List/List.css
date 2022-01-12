@@ -1,0 +1,10 @@
+a:hover {
+  font-weight: 900;
+  text-decoration: wavy;
+}
+
+ul {
+  width: 200px;
+  border: 1px solid darkblue;
+  margin: 100px;
+}
