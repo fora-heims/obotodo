@@ -4,7 +4,8 @@ a:hover {
 }
 
 ul {
-  width: 200px;
+  width: 50vw;
   border: 1px solid darkblue;
   margin: 100px;
+  padding: 50px;
 }

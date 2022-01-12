@@ -4,7 +4,7 @@ import { useState, React, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Todo from '../../components/Todo/Todo';
-import { addTodo, deleteTodo, getTodos } from '../../services/todos.js';
+import { addTodo, deleteTodo, getTodos, toggleCompleted } from '../../services/todos.js';
 
 export default function List({ user, setUser }) {
   const [todos, setTodos] = useState([]);
@@ -18,6 +18,22 @@ export default function List({ user, setUser }) {
     fetchTodos();
   }, []);
 
+  const handleCheck = async (task) => {
+    await toggleCompleted(task.id, !task.is_complete);
+    // two options - fetch all todos, or loop through to
+    const newTodos = todos.map((todo) =>
+      task.id === todo.id ? { ...task, is_complete: !task.is_complete } : todo
+    );
+    setTodos(newTodos);
+  };
+
+  const deleteT = async (id) => {
+    await deleteTodo(id);
+    // two options - fetch all todos, or loop through to
+    const newTodos = todos.filter((todo) => id !== todo.id);
+    setTodos(newTodos);
+  };
+
   return (
     <>
       <NavLink to="/">Home</NavLink>
@@ -28,7 +44,8 @@ export default function List({ user, setUser }) {
         newt={newt}
         setNewt={setNewt}
         addTodo={addTodo}
-        deleteTodo={deleteTodo}
+        deleteT={deleteT}
+        handleCheck={handleCheck}
       />
     </>
   );

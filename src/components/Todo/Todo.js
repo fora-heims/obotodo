@@ -2,7 +2,7 @@ import './Todo.css';
 
 import React from 'react';
 
-export default function Todo({ todos, newt, setNewt, addTodo, deleteTodo }) {
+export default function Todo({ todos, newt, setNewt, addTodo, deleteT, handleCheck }) {
   return (
     <div>
       <label>
@@ -17,11 +17,11 @@ export default function Todo({ todos, newt, setNewt, addTodo, deleteTodo }) {
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            <input type="checkbox" checked={todo.is_complete} />
+            <input type="checkbox" checked={todo.is_complete} onChange={() => handleCheck(todo)} />
             <p>{todo.task}</p>
             <label>
               Delete Task:
-              <button onClick={() => deleteTodo(todo.id)}>X</button>
+              <button onClick={() => deleteT(todo.id)}>X</button>
             </label>
           </li>
         ))}

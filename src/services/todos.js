@@ -1,19 +1,23 @@
-import { client, checkTodoError } from './client.js';
+import { client, checkError } from './client.js';
 
-export function getTodos() {
-  const response = client.from('todos').select('*');
-  console.log(response);
-  return checkTodoError(response);
+export async function getTodos() {
+  const response = await client.from('todos').select('*');
+  return checkError(response);
 }
 
 export async function addTodo(task) {
   const response = await client
     .from('todos')
     .insert([{ task: task, user_id: client.auth.user().id }]);
-  return checkTodoError(response);
+  return checkError(response);
 }
 
 export async function deleteTodo(id) {
   const response = await client.from('todos').delete().eq('id', id);
-  return checkTodoError(response);
+  return checkError(response);
+}
+
+export async function toggleCompleted(id, isComplete) {
+  const response = await client.from('todos').update({ is_complete: isComplete }).match({ id });
+  return checkError(response);
 }
