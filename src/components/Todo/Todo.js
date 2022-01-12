@@ -2,7 +2,7 @@ import './Todo.css';
 
 import React from 'react';
 
-export default function Todo({ todos, newt, setNewt, addTodo, deleteT, handleCheck }) {
+export default function Todo({ todos, newt, setNewt, addT, deleteT, handleCheck }) {
   return (
     <div>
       <label>
@@ -13,7 +13,7 @@ export default function Todo({ todos, newt, setNewt, addTodo, deleteT, handleChe
           onChange={(e) => setNewt(e.target.value)}
         />
       </label>
-      <button onClick={() => addTodo(newt)}>Add Task</button>
+      <button onClick={() => addT(newt)}>Add Task</button>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
