@@ -4,17 +4,21 @@ import { useState, React, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Todo from '../../components/Todo/Todo';
-import { addTodo, deleteTodo, getTodos, toggleCompleted } from '../../services/todos.js';
+import { addTodo, deleteTodo, getTodos, toggleCompleted, alterTask } from '../../services/todos.js';
 import { logout } from '../../services/users';
 
 export default function List({ user, setUser }) {
   const [todos, setTodos] = useState([]);
   const [newt, setNewt] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [newTask, setNewTask] = useState('');
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
     const fetchTodos = async () => {
       let data = await getTodos();
       setTodos(data);
+      setLoading(false);
     };
     fetchTodos();
   }, []);
@@ -46,19 +50,45 @@ export default function List({ user, setUser }) {
     setNewt('');
   };
 
+  const updateTask = async (task) => {
+    if (update === true) {
+      if (newTask.length < 4) {
+        setUpdate(false);
+        return;
+      }
+      await alterTask(task.id, newTask);
+      const newTodos = todos.map((todo) =>
+        task.id === todo.id ? { ...task, task: newTask } : todo
+      );
+      setTodos(newTodos);
+      setUpdate(false);
+      setNewTask('');
+    } else {
+      setUpdate(true);
+    }
+  };
+
   return (
     <>
       <NavLink to="/">Home</NavLink>
       <Header user={user} setUser={setUser} logout={logout} />
-      <Todo
-        todos={todos}
-        setTodos={setTodos}
-        newt={newt}
-        setNewt={setNewt}
-        addT={addT}
-        deleteT={deleteT}
-        handleCheck={handleCheck}
-      />
+      {loading ? (
+        <div>...Loading</div>
+      ) : (
+        <Todo
+          todos={todos}
+          setTodos={setTodos}
+          newt={newt}
+          setNewt={setNewt}
+          addT={addT}
+          deleteT={deleteT}
+          handleCheck={handleCheck}
+          newTask={newTask}
+          setNewTask={setNewTask}
+          updateTask={updateTask}
+          update={update}
+        />
+      )}
     </>
   );
 }

@@ -21,3 +21,8 @@ export async function toggleCompleted(id, isComplete) {
   const response = await client.from('todos').update({ is_complete: isComplete }).match({ id });
   return checkError(response);
 }
+
+export async function alterTask(id, task) {
+  const response = await client.from('todos').update({ task: task }).match({ id });
+  return checkError(response);
+}
