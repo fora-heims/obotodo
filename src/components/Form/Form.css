@@ -1,0 +1,53 @@
+form {
+  color: yellow;
+  background-color: violet;
+  font-size: 2rem;
+  font-weight: 300;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 20px;
+}
+
+form input[type='text'],
+form input[type='password'] {
+  border-radius: 10px;
+  border: none;
+  height: 30px;
+  margin: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: blueviolet;
+  width: 200px;
+  padding: 5px;
+}
+
+input[type='submit'] {
+  padding: 10px;
+  width: 120px;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  border: none;
+  color: hotpink;
+  font-weight: 900;
+  font-family: 'Courier New', Courier, monospace;
+  margin-left: 45px;
+}
+
+.pink {
+  background-color: darkorchid;
+  height: 200px;
+}
+
+.pinkify {
+  height: 250px;
+  background-color: fuchsia;
+}
+
+.pinkify-div {
+  height: 300px;
+  background-color: deeppink;
+}
+
+input[type='submit']:hover {
+  cursor: pointer;
+}

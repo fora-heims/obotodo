@@ -40,10 +40,17 @@ export default function Auth({ user, setUser }) {
           submitHandler={submitHandler}
         />
       ) : (
-        <img
-          src="https://thumbs.dreamstime.com/b/cat-pic-catpose-catpic-kittenpic-moodykitten-whitekitten-157371421.jpg"
-          alt="cat"
-        />
+        <>
+          <div className="pink">
+            <img
+              src="https://thumbs.dreamstime.com/b/cat-pic-catpose-catpic-kittenpic-moodykitten-whitekitten-157371421.jpg"
+              alt="cat"
+            />
+          </div>
+          <div className="pink"></div>
+          <div className="pinkify"></div>
+          <div className="pinkify-div"></div>
+        </>
       )}
     </div>
   );

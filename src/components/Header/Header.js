@@ -1,20 +1,32 @@
 import './Header.css';
 import classNames from 'classnames';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom';
 
 export default function Header({ user, setUser, type, setType, logout }) {
   let history = useHistory();
 
-  const logO = () => {
-    logout();
+  const logO = async () => {
+    await logout();
     setUser(null);
     history.push('/');
   };
 
+  const handleHome = () => {
+    history.push('/');
+    setType('home');
+  };
+
+  const handleTodo = () => {
+    history.push('/list');
+    setType('todo');
+  };
+
   return (
     <header>
+      <h3 className={classNames({ active: type === 'home' })} onClick={handleHome}>
+        Home
+      </h3>
       {!user ? (
         <>
           <h3 className={classNames({ active: type === 'in' })} onClick={() => setType('in')}>
@@ -26,7 +38,9 @@ export default function Header({ user, setUser, type, setType, logout }) {
         </>
       ) : (
         <>
-          <NavLink to="/list">Todo List</NavLink>
+          <h3 className={classNames({ active: type === 'todo' })} onClick={handleTodo}>
+            Todo List
+          </h3>
           <h3 onClick={logO}>Sign Out</h3>
         </>
       )}

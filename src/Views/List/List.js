@@ -1,7 +1,6 @@
 import './List.css';
 
 import { useState, React, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Todo from '../../components/Todo/Todo';
 import { addTodo, deleteTodo, getTodos, toggleCompleted, alterTask } from '../../services/todos.js';
@@ -70,7 +69,6 @@ export default function List({ user, setUser }) {
 
   return (
     <>
-      <NavLink to="/">Home</NavLink>
       <Header user={user} setUser={setUser} logout={logout} />
       {loading ? (
         <div>...Loading</div>

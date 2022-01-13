@@ -5,9 +5,17 @@ header h3:hover {
 
 .active {
   text-decoration: underline;
+  font-size: 1.5rem;
 }
 
 a:hover {
   font-weight: 900;
   text-decoration: wavy;
+}
+
+header {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: hotpink;
+  color: yellow;
 }
