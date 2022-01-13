@@ -12,7 +12,7 @@ export default function List({ user, setUser }) {
   const [newt, setNewt] = useState('');
   const [loading, setLoading] = useState(true);
   const [newTask, setNewTask] = useState('');
-  const [update, setUpdate] = useState(false);
+  const [update, setUpdate] = useState(0);
 
   useEffect(() => {
     const fetchTodos = async () => {
@@ -51,9 +51,9 @@ export default function List({ user, setUser }) {
   };
 
   const updateTask = async (task) => {
-    if (update === true) {
+    if (update === task.id) {
       if (newTask.length < 4) {
-        setUpdate(false);
+        setUpdate(0);
         return;
       }
       await alterTask(task.id, newTask);
@@ -61,10 +61,10 @@ export default function List({ user, setUser }) {
         task.id === todo.id ? { ...task, task: newTask } : todo
       );
       setTodos(newTodos);
-      setUpdate(false);
+      setUpdate(0);
       setNewTask('');
     } else {
-      setUpdate(true);
+      setUpdate(task.id);
     }
   };
 

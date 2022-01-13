@@ -29,7 +29,7 @@ export default function Todo({
         {todos.map((todo) => (
           <li key={todo.id}>
             <input type="checkbox" checked={todo.is_complete} onChange={() => handleCheck(todo)} />
-            {update ? (
+            {update === todo.id ? (
               <input
                 value={newTask}
                 onChange={(e) => setNewTask(e.target.value)}
