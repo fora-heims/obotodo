@@ -3,7 +3,8 @@ import './App.css';
 import Auth from './Views/Auth/Auth.js';
 import { useState } from 'react';
 import { getUser } from './services/users.js';
-import List from './Views/List/List';
+import List from './Views/List/List.js';
+import ProtectedRoute from './utils/ProtectedRoute.js';
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -12,9 +13,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route exact path="/list">
+          <ProtectedRoute exact path="/list" user={user}>
             <List user={user} setUser={setUser} />
-          </Route>
+          </ProtectedRoute>
           <Route exact path="/">
             <Auth user={user} setUser={setUser} />
           </Route>
