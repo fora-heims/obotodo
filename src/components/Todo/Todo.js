@@ -13,19 +13,23 @@ export default function Todo({
   setNewTask,
   updateTask,
   update,
+  user,
 }) {
   return (
     <div>
-      <label>
-        <input
-          placeholder="enter a new task here"
-          type="text"
-          value={newt}
-          onChange={(e) => setNewt(e.target.value)}
-        />
-      </label>
-      <button onClick={() => addT(newt)}>Add Task</button>
       <ul>
+        <h2>To Do List for {user.email}</h2>
+        <div>
+          <label>
+            <input
+              placeholder="enter a new task here"
+              type="text"
+              value={newt}
+              onChange={(e) => setNewt(e.target.value)}
+            />
+          </label>
+          <button onClick={() => addT(newt)}>Add Task</button>
+        </div>
         {todos.map((todo) => (
           <li key={todo.id}>
             <input type="checkbox" checked={todo.is_complete} onChange={() => handleCheck(todo)} />
@@ -40,14 +44,9 @@ export default function Todo({
               <p>{todo.task}</p>
             )}
             <div>
-              <label>
-                Delete Task:
-                <button onClick={() => deleteT(todo.id)}>X</button>
-              </label>
-              <label>
-                Update Task:
-                <button onClick={() => updateTask(todo)}>X</button>
-              </label>
+              <button onClick={() => deleteT(todo.id)}>Delete</button>
+
+              <button onClick={() => updateTask(todo)}>Update</button>
             </div>
           </li>
         ))}

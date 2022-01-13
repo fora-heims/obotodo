@@ -76,6 +76,7 @@ export default function List({ user, setUser }) {
         <div>...Loading</div>
       ) : (
         <Todo
+          user={user}
           todos={todos}
           setTodos={setTodos}
           newt={newt}

@@ -6,3 +6,8 @@ header h3:hover {
 .active {
   text-decoration: underline;
 }
+
+a:hover {
+  font-weight: 900;
+  text-decoration: wavy;
+}

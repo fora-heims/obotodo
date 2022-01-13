@@ -9,3 +9,21 @@ li {
 button:hover {
   cursor: pointer;
 }
+
+li div button {
+  margin: 10px;
+}
+
+ul {
+  width: 50vw;
+  border: 1px solid darkblue;
+  border-radius: 20px;
+  margin: 100px;
+  padding: 50px;
+}
+
+ul div {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
