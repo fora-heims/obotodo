@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
+import Auth from './Views/Auth/Auth.js';
+import { useState } from 'react';
+import { getUser } from './services/users.js';
+import List from './Views/List/List.js';
+import ProtectedRoute from './utils/ProtectedRoute.js';
 
 function App() {
+  const [user, setUser] = useState(getUser());
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Switch>
+          <ProtectedRoute exact path="/list" user={user}>
+            <List user={user} setUser={setUser} />
+          </ProtectedRoute>
+          <Route exact path="/">
+            <Auth user={user} setUser={setUser} />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
